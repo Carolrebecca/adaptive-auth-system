@@ -1,115 +1,146 @@
-# 🔐 Adaptive Authentication System (Cyber Range Simulation)
+# Adaptive Authentication System
 
-## 📌 Overview
-
-This project is a **Cyber Range-based Attack–Defense Simulation System** developed using Flask. It demonstrates how insecure authentication systems can be exploited and how modern security mechanisms prevent such attacks.
-
-The system provides a **real-time interactive dashboard** with attack simulation, secure login mechanisms, and live monitoring.
+### Cyber Range-Based Attack & Defense Simulation
 
 ---
 
-## 🎯 Objectives
+## 📌 Project Overview
 
-* Simulate password-based attacks (dictionary attack)
-* Demonstrate insecure vs secure authentication
+The **Adaptive Authentication System** is a web-based cybersecurity simulation platform that demonstrates both **authentication attacks** and **defense mechanisms** in a controlled cyber range environment.
+
+This project highlights how insecure systems can be exploited using password attacks and how modern security techniques such as **hashing, OTP, and account lock mechanisms** can mitigate these threats.
+
+---
+
+## 🎯 Key Objectives
+
+* Simulate real-world password-based attacks
+* Compare insecure vs secure authentication systems
 * Implement multi-layer defense mechanisms
-* Provide real-time monitoring using logs and analytics
+* Provide real-time monitoring and visualization
 
 ---
 
-## ⚙️ Features
+## ⚙️ Core Features
 
-### 🔓 Insecure Authentication
+### 🔓 Insecure Authentication (Attack Target)
 
-* Plain-text password validation
-* Vulnerable to brute-force and dictionary attacks
+* Plain-text password verification
+* Vulnerable to dictionary attacks
+* Demonstrates weak security practices
 
-### 🔐 Secure Authentication
+---
+
+### 🔐 Secure Authentication (Defense System)
 
 * SHA-256 password hashing
 * Account lock after multiple failed attempts
-* OTP-based second layer authentication
-
-### 🧨 Attack Simulation
-
-* Dictionary attack simulation
-* Real-time attack progress visualization
-* Password cracking demonstration
-
-### 📊 Dashboard & Monitoring
-
-* Live logs with attack and login activity
-* Real-time statistics (attacks, failures)
-* Interactive charts (line + doughnut)
-
-### 🎨 UI/UX
-
-* Glassmorphism + neon cyber UI
-* Animated dashboard
-* Progress bars and interactive feedback
+* OTP-based secondary authentication
+* Prevents brute-force and unauthorized access
 
 ---
 
-## 🛠️ Tech Stack
+### 🧨 Attack Simulation Engine
 
-* **Backend:** Python (Flask)
-* **Frontend:** HTML, CSS, JavaScript
-* **Visualization:** Chart.js
-* **Security:** Hashlib (SHA-256)
+* Dictionary-based password cracking
+* Simulated attack progression
+* Demonstrates how weak passwords are compromised
+
+---
+
+### 📊 Real-Time Dashboard
+
+* Live logs of system activity
+* Attack and failure statistics
+* Interactive charts (line & doughnut)
+
+---
+
+### 🎨 User Interface
+
+* Modern glassmorphism design
+* Neon cyber-themed dashboard
+* Animated components and transitions
+* Interactive feedback system
+
+---
+
+## 🛠️ Technology Stack
+
+| Component     | Technology            |
+| ------------- | --------------------- |
+| Backend       | Python (Flask)        |
+| Frontend      | HTML, CSS, JavaScript |
+| Visualization | Chart.js              |
+| Security      | hashlib (SHA-256)     |
 
 ---
 
 ## 📂 Project Structure
 
-```
-project/
+```bash
+Adaptive-Authentication-System/
 ├── app.py
 ├── requirements.txt
-├── Procfile
 ├── templates/
 │   └── index.html
-└── static/
-    └── style.css
+├── static/
+│   └── style.css
+├── images/
+└── README.md
 ```
 
 ---
 
-## 🚀 How to Run Locally
+## 🚀 How to Run the Project
 
-1. Install dependencies:
+### 1. Install Dependencies
 
-```
+```bash
 pip install flask
 ```
 
-2. Run the app:
+### 2. Run the Application
 
-```
+```bash
 python app.py
 ```
 
-3. Open browser:
+### 3. Open in Browser
 
-```
+```bash
 http://127.0.0.1:5000
 ```
 
 ---
 
-## 🌐 Deployment
+## 👥 Default User Credentials (for testing)
 
-The application can be deployed using platforms like:
-
-* Render
-* Heroku (alternative)
+| Username | Password    |
+| -------- | ----------- |
+| admin    | password123 |
+| carol    | carol@123   |
+| john     | john123     |
+| alice    | alice@2026  |
 
 ---
 
-## 🧠 Key Concepts Demonstrated
+## 📸 Screenshots
+
+```markdown
+![Dashboard](images/dashboard.png)
+![Attack Simulation](images/attack.png)
+![Logs](images/logs.png)
+![Analytics](images/graph.png)
+```
+
+---
+
+## 🧠 Concepts Demonstrated
 
 * Cyber Range Simulation
+* Password Cracking (Dictionary Attack)
 * Authentication Security
-* Password Cracking Techniques
 * Multi-Factor Authentication (MFA)
 * Intrusion Detection (basic logging)
 
@@ -119,8 +150,8 @@ The application can be deployed using platforms like:
 
 * CAPTCHA integration
 * Role-Based Access Control (RBAC)
-* Machine Learning-based anomaly detection
 * Database integration (SQLite/MySQL)
+* Machine learning-based anomaly detection
 
 ---
 
@@ -132,4 +163,4 @@ Carolrebecca M
 
 ## 📜 License
 
-This project is for academic and educational purposes only.
+This project is developed for academic and educational purposes only.
