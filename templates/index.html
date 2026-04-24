@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Adaptive Auth simulator</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+</head>
+
+<body>
+
+<div class="bg-animation"></div>
+
+<div class="container">
+
+<h1>🔐 Adaptive Authentication</h1>
+
+<!-- STATS -->
+<div class="stats">
+    <div class="stat glow">HIGH SECURITY</div>
+    <div class="stat">⚡ <span id="attackCount">0</span></div>
+    <div class="stat">❌ <span id="failCount">0</span></div>
+</div>
+
+<!-- MODE -->
+<div class="tabs">
+    <button id="insecureBtn" onclick="setMode('insecure')">Insecure</button>
+    <button id="secureBtn" onclick="setMode('secure')">Secure</button>
+</div>
+
+<!-- LOGIN -->
+<div class="glass">
+
+<input id="user" placeholder="Username">
+<input id="pass" type="password" placeholder="Password">
+
+<button onclick="login()" class="main-btn">Login</button>
+<button onclick="startAttack()" class="attack-btn">Simulate Attack</button>
+
+<div class="progress"><div id="bar"></div></div>
+
+</div>
+
+<!-- CHARTS -->
+<div class="charts">
+    <canvas id="lineChart"></canvas>
+    <canvas id="pieChart"></canvas>
+</div>
+
+<!-- LOGS -->
+<div class="glass logs" id="logs"></div>
+
+</div>
+
+<!-- OTP -->
+<div id="modal">
+<div class="modal-box">
+<h2>OTP</h2>
+<p id="otpText"></p>
+<button onclick="modal.style.display='none'">Close</button>
+</div>
+</div>
+
+<!-- TOAST -->
+<div id="toast"></div>
+
+<script>
+let mode="insecure"
+
+// MODE SWITCH
+function setMode(m){
+mode=m
+insecureBtn.classList.toggle("active", m==="insecure")
+secureBtn.classList.toggle("active", m==="secure")
+}
+
+// LOGIN
+function login(){
+fetch("/"+mode,{
+method:"POST",
+headers:{"Content-Type":"application/x-www-form-urlencoded"},
+body:`username=${user.value}&password=${pass.value}`
+})
+.then(r=>r.json())
+.then(d=>{
+if(d.status==="otp"){
+otpText.innerText="OTP: "+d.otp
+modal.style.display="flex"
+showToast("Secure login success")
+}
+else if(d.status==="fail"){
+showToast("Login failed", true)
+}
+})
+}
+
+// ATTACK TYPEWRITER + PROGRESS
+function startAttack(){
+let words=["123456","admin","password","password123"]
+let i=0
+let barWidth=0
+
+let interval=setInterval(()=>{
+barWidth+=5
+bar.style.width=barWidth+"%"
+
+if(i<words.length){
+logs.innerHTML+=`<p class="attack">⚡ Trying ${words[i]}</p>`
+logs.scrollTop=logs.scrollHeight
+i++
+}
+
+if(barWidth>=100){
+clearInterval(interval)
+fetch("/attack")
+}
+},120)
+}
+
+// LOGS
+setInterval(()=>{
+fetch("/logs").then(r=>r.json())
+.then(d=>{
+logs.innerHTML=d.map(l=>`<p>${l}</p>`).join("")
+logs.scrollTop=logs.scrollHeight
+})
+},1000)
+
+// STATS
+setInterval(()=>{
+fetch("/stats").then(r=>r.json())
+.then(d=>{
+attackCount.innerText=d.attacks
+failCount.innerText=d.fails
+})
+},1000)
+
+// CHARTS
+let line=new Chart(lineChart,{type:"line",data:{labels:["A","B"],datasets:[{data:[0,0]}]}})
+let pie=new Chart(pieChart,{type:"doughnut",data:{labels:["A","B"],datasets:[{data:[0,0]}]}})
+
+setInterval(()=>{
+fetch("/graph").then(r=>r.json())
+.then(d=>{
+line.data.datasets[0].data=d.values
+pie.data.datasets[0].data=d.values
+line.update()
+pie.update()
+})
+},1000)
+
+// TOAST
+function showToast(msg, error=false){
+toast.innerText=msg
+toast.className=error?"toast error":"toast"
+setTimeout(()=>toast.className="toast",2000)
+}
+</script>
+
+</body>
+</html>
