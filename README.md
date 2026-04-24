@@ -129,7 +129,7 @@ http://127.0.0.1:5000
 
 ```markdown
 ![Dashboard](./images/dashboard.png)
-![Attack](./images/attack.png)
+![Attack Simulation](./images/attack.png)
 ![Logs](./images/logs.png)
 ![Analytics](./images/graph.png)
 ```
