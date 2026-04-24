@@ -128,10 +128,10 @@ http://127.0.0.1:5000
 ## 📸 Screenshots
 
 ```markdown
-![Dashboard](images/dashboard.png)
-![Attack Simulation](images/attack.png)
-![Logs](images/logs.png)
-![Analytics](images/graph.png)
+![Dashboard](./images/dashboard.png)
+![Attack](./images/attack.png)
+![Logs](./images/logs.png)
+![Analytics](./images/graph.png)
 ```
 
 ---
