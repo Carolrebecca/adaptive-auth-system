@@ -126,7 +126,7 @@ The application can be deployed using platforms like:
 
 ## 👩‍💻 Author
 
-Carol Rebecca
+Carolrebecca M
 
 ---
 
