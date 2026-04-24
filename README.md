@@ -115,12 +115,6 @@ The application can be deployed using platforms like:
 
 ---
 
-## 📸 Screenshots
-
-(Add your UI screenshots here)
-
----
-
 ## 📈 Future Enhancements
 
 * CAPTCHA integration
