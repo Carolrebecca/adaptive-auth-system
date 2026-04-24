@@ -127,7 +127,6 @@ http://127.0.0.1:5000
 
 ## 📸 Screenshots
 
-```markdown
 ![Dashboard](./images/dashboard.png)
 ![Attack Simulation](https://github.com/Carolrebecca/adaptive-auth-system/blob/main/images/attack.png)
 ![Logs](./images/logs.png)
